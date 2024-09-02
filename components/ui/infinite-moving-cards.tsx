@@ -22,20 +22,12 @@ import referance16 from "@/public/aser-images/references/tuvasac.png"
 import referance17 from "@/public/aser-images/references/uluso.png"
 
 export const InfiniteMovingCards = ({
-  items,
   direction = "left",
   speed = "fast",
-  pauseOnHover = true,
   className,
 }: {
-  items: {
-    quote: string;
-    name: string;
-    title: string;
-  }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
-  pauseOnHover?: boolean;
   className?: string;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -98,20 +90,16 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
-          start && "animate-scroll"
+          " flex  shrink-0 gap-4 py-4 flex-nowrap h-40 items-center justify-center",
+          start && "animate-scroll "
         )}
       >
         {references.map((referance, idx) => (
           <li
-            className="w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px]"
-            style={{
-              background:
-                "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
-            }}
+            className=" min-w-[150px] h-[50px]  object-contain flex flex-col items-center justify-center"
             key={idx}
           > 
-            <Image src={referance} alt="references"/>
+            <Image src={referance} className=" object-contain max-h-[50px] filter grayscale"  alt="references"/>
           </li>
         ))}
       </ul>
