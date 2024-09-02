@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import "swiper/css";
@@ -7,6 +8,7 @@ import { CustomNavigation } from "@/components/ui/customNavigation";
 import { InsideOfSlider } from "@/components/ui/inside-of-slider";
 import { SliderDesign } from "@/components/ui/slider-design";
 import { CornerDownRight } from "lucide-react";
+import scroll from "@/public/scroll.png";
 
 export function FirstSection() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -78,6 +80,7 @@ export function FirstSection() {
       <h1 className="relative z-40 top-5 left-0 w-20 text-center  text-base">
         A
       </h1>
+      <Image src={scroll} alt="scroll" className="absolute z-40 bottom-5 left-5"/>
     </>
   );
 }
