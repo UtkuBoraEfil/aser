@@ -1,5 +1,6 @@
 import { SecondSection } from "@/components/secondSection";
 import { FirstSection } from "@/components/firstSection";
+import { Contact } from "@/components/contact";
 
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
         <FirstSection/>
       </div>
       <SecondSection/>
+      <Contact/>
     </main>
   );
 }

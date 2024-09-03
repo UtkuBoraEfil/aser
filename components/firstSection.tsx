@@ -48,7 +48,7 @@ export function FirstSection() {
                 <p className="text-xs leading-none pl-2 border-l-2 border-white">
                   Power of Technology
                 </p>
-                <h1 className="text-7xl font-bold  ">
+                <h1 className="text-7xl font-bold  leading-[92px] ">
                   AUTOMATION SOLUTIONS TRUSTED THE WORLD OVER.
                 </h1>
               </div>

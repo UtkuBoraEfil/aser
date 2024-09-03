@@ -8,7 +8,7 @@ export function AboutAser() {
           </span>
         </h1>
         <div className="w-full bg-about-image-1 bg-cover bg-no-repeat bg-center px-10 pb-3 h-[360px] grid content-end relative">
-          <p className=" text-2xl pr-40">
+          <p className=" text-2xl pr-40 font-bold leading-8">
             ASER was established in 2005 with the national/domestic product and
             technology mission based on past high technological product
             experiences and it serves on behalf of providing...
