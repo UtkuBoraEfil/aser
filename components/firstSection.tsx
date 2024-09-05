@@ -75,7 +75,7 @@ export function FirstSection() {
         </section>
       </section>
       <h1 className="absolute z-40 top-5 right-0 lg:text-sm text-xs vertical-text lg:w-20 md:w-12 w-8 grid place-content-center">
-        // POWER OF TECHNOLOGY
+        {"// POWER OF TECHNOLOGY"}
       </h1>
       <h1 className="relative z-40 top-5 left-0 lg:w-20 md:w-12 w-8 text-center  text-base">
         A
