@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SolutionCorner } from "./solutionCorner";
 
 export function Solutions() {
   const solutions = [
@@ -14,18 +15,20 @@ export function Solutions() {
           ns
         </span>
       </h1>
-      <div className="w-full flex gap-10">
+      <div className="w-full md:flex lg:gap-10 gap-3">
         {solutions.map((solution, index) => (
             // hemen alttaki div link olacak
-          <div key={index}>
+          <div key={index} className="flex justify-between w-full pb-5 md:pb-0   md:block">
             <div
               className={`bg-solution-image-${
                 index + 1
-              } bg-cover bg-no-repeat bg-center 2xl:w-[340px] 2xl:h-[200px] w-[280px] h-[140px]  relative`}
+              } bg-cover bg-no-repeat bg-center 2xl:w-[340px] 2xl:h-[200px] xl:w-[280px] xl:h-[140px] w-[200px] h-[100px]  relative`}
             >
-              <div className="absolute -bottom-3 -right-7 w-20 h-12 bg-black -rotate-45  "></div>
+              <div className="absolute -bottom-1 right-0 ">
+                <SolutionCorner />
+              </div>
             </div>
-            <h1 className="text-xl pt-2">{solution}</h1>
+            <h1 className="text-xl pt-2 h-full align-text-bottom  ">{solution}</h1>
           </div>
         ))}
       </div>

@@ -14,6 +14,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'sm': '640px',
+        'md': '768px',
+        'lg': '990px',
+        'xl': '1210px',
+        '2xl': '1390px',
+      },
       animation: {
         scroll:
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",

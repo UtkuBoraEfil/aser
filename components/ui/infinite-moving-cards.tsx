@@ -21,18 +21,21 @@ import referance15 from "@/public/aser-images/references/tubitak.png"
 import referance16 from "@/public/aser-images/references/tuvasac.png"
 import referance17 from "@/public/aser-images/references/uluso.png"
 
+const references = [referance1, referance2, referance3, referance4, referance5, referance6, referance7, referance8, referance9, referance10, referance11, referance12, referance13, referance14, referance15, referance16, referance17]
+
 export const InfiniteMovingCards = ({
   direction = "left",
   speed = "fast",
+  pauseOnHover = false,
   className,
 }: {
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
+  pauseOnHover?: boolean;
   className?: string;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
-  const references = [referance1, referance2, referance3, referance4, referance5, referance6, referance7, referance8, referance9, referance10, referance11, referance12, referance13, referance14, referance15, referance16, referance17]
   useEffect(() => {
     addAnimation();
   }, []);
@@ -55,7 +58,7 @@ export const InfiniteMovingCards = ({
   }
   const getDirection = () => {
     if (containerRef.current) {
-      if (direction === "right") {
+      if (direction === "left") {
         containerRef.current.style.setProperty(
           "--animation-direction",
           "forwards"
@@ -83,14 +86,14 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        " relative z-20  max-w-7xl overflow-hidden",
+        " scroller relative z-20  max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex  shrink-0 gap-4 py-4 flex-nowrap h-40 items-center justify-center",
+          " flex min-w-full w-max  shrink-0 gap-4 py-4 flex-nowrap h-40 items-center justify-center",
           start && "animate-scroll "
         )}
       >
@@ -99,7 +102,7 @@ export const InfiniteMovingCards = ({
             className=" min-w-[150px] h-[50px]  object-contain flex flex-col items-center justify-center"
             key={idx}
           > 
-            <Image src={referance} className=" object-contain max-h-[50px] filter grayscale"  alt="references"/>
+            <Image src={referance}  className=" object-contain w-auto max-h-[50px] filter grayscale"  alt="references"/>
           </li>
         ))}
       </ul>
