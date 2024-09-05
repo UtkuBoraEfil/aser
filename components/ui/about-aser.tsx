@@ -1,19 +1,23 @@
+import { AboutCorner } from "./about-corner";
+
 export function AboutAser() {
   return (
     <>
-        <h1 className="text-3xl pb-10">
+        <h1 className="lg:text-3xl text-2xl pb-10 text-center md:text-start">
           About Aser Techno
           <span className="underline underline-offset-[12px] decoration-[#FF0000]">
             logy
           </span>
         </h1>
-        <div className="w-full bg-about-image-1 bg-cover bg-no-repeat bg-center px-10 pb-3 h-[360px] grid content-end relative">
-          <p className=" text-2xl pr-40 font-bold leading-8">
+        <div className="w-full bg-about-image-1 bg-cover bg-no-repeat bg-center md:px-10 px-5 pb-3 h-[360px] grid md:content-end content-center relative">
+          <p className=" lg:text-2xl md:text-xl lg:pr-40 md:pr-12 font-bold leading-8">
             ASER was established in 2005 with the national/domestic product and
             technology mission based on past high technological product
             experiences and it serves on behalf of providing...
           </p>
-          <div className="absolute -bottom-6 -right-12 w-40 h-14 bg-black -rotate-45"></div>
+          <div className="absolute bottom-0 right-0 w-fit">
+            <AboutCorner />
+          </div>
         </div>
     </>
 

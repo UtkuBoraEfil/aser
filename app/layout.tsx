@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Orbitron } from "next/font/google";
 import "./globals.css";
 
+import { cn } from "@/lib/utils";
+
 const inter = Orbitron({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn(inter.className)}>{children}</body>
     </html>
   );
 }
