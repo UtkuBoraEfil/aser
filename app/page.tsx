@@ -5,7 +5,7 @@ import { Contact } from "@/components/contact";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-[#010101] text-white">
       <div className="w-full h-screen">
         <FirstSection/>
       </div>
