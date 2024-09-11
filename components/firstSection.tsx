@@ -85,7 +85,7 @@ export function FirstSection() {
                 <p className="text-xs leading-none pl-2 border-l-2 border-white">
                   Power of Technology
                 </p>
-                <h1 ref={title} className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 ">
+                <h1 ref={title} className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 overflow-hidden">
                 </h1>
               </div>
             </div>
