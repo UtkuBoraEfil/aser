@@ -1,6 +1,19 @@
+"use client";
+
+import React, { useRef, useState, useEffect, use } from "react";
 import Link from "next/link";
 import { SolutionCorner } from "./solutionCorner";
 import { cn } from "@/lib/utils";
+
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrambleTextPlugin);
+gsap.registerPlugin(ScrollTrigger) ;
+
 
 export function Solutions() {
   const solutions = [
@@ -8,6 +21,23 @@ export function Solutions() {
     "Telecommunication",
     "Energy Automation",
   ];
+
+  const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
+
+  useGSAP(()=>{
+    titleRefs.current.map((title, index)=>{
+      gsap.to(title, {
+        scrollTrigger: title,
+        duration: 2,
+        scrambleText: {
+          text: solutions[index], // this part should be dynamic
+          chars: "upperCase", 
+          revealDelay: 0.5, 
+          speed: 0.2,
+        }
+      });
+    })
+  })
   return (
     <>
       <h1 className="lg:text-3xl text-2xl  py-10 text-center md:text-start ">
@@ -29,7 +59,8 @@ export function Solutions() {
                 <SolutionCorner />
               </div>
             </div>
-            <h1 className="text-xl pt-2 grid place-content-center lg:place-content-start ">{solution}</h1>
+            {/* @ts-ignore */}
+            <h1 ref={(el: HTMLHeadingElement | null) => (titleRefs.current[index] = el)}  className={` will-animate  text-xl pt-2 grid place-content-center lg:place-content-start `}>{solution}</h1>
           </div>
         ))}
       </div>

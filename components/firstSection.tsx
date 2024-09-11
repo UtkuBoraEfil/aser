@@ -22,32 +22,27 @@ export function FirstSection() {
   const titles = ["AUTOMATION SOLUTIONS TRUSTED THE WORLD OVER.", "Yarının teknolojilerini bugünden tasarlıyoruz.", "Yenilikçi çözümlerle geleceği şekillendiriyoruz.", "Dünyanın dört bir yanında güvenilir çözümler sunuyoruz."]
   const texts = ["The possession of technologies related to radar systems is critical for countries.", "Work harder son!", "just do it", "useless text"]
   const [activeSwiper, setActiveSwiper] = useState(0);
-  
-  useEffect(()=>{
-    console.log(activeSwiper)
-    console.log(titles[activeSwiper])
-    const animation = gsap.to(title.current, {
-      duration: 2,
-      scrambleText: {
-        text: titles[activeSwiper],
-        chars: "upperCase",
-        revealDelay: 0.5,
-        speed: 0.2,
-      }});
-      const animation2 = gsap.to(textRef.current, {
-        duration: 4,
-        scrambleText: {
-          text: texts[activeSwiper],
-          chars: "upperCase",
-          revealDelay: 2,
-          speed: 0.2,
-        }});
-  },[activeSwiper])
-
 
   const title = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
-    
+  
+  useGSAP(
+    () => {
+        // gsap code here...
+        gsap.to(textRef.current, {
+            duration: 2,
+            scrambleText: {
+              text: texts[activeSwiper], 
+              chars: "upperCase", 
+              revealDelay: 0.5, 
+              speed: 0.2,
+              // tweenLength: false,
+              // delimiter: " " 
+            }
+        });
+    }, [activeSwiper],
+); // <-- scope is for selector text (optional)
+  
 
   return (
     <>
@@ -86,6 +81,7 @@ export function FirstSection() {
                   Power of Technology
                 </p>
                 <h1 ref={title} className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 overflow-hidden">
+                  {titles[activeSwiper]}
                 </h1>
               </div>
             </div>

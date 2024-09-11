@@ -1,6 +1,8 @@
+import React, { useRef, useState, useEffect, use } from "react";
 import { AboutCorner } from "./about-corner";
 
 export function AboutAser() {
+
   return (
     <>
         <h1 className="lg:text-3xl text-2xl pb-10 text-center md:text-start">
