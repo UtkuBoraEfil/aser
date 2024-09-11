@@ -15,11 +15,12 @@ import referance9 from "@/public/aser-images/references/saglik-bakanligi.png"
 import referance10 from "@/public/aser-images/references/sanko.png"
 import referance11 from "@/public/aser-images/references/sc.png"
 import referance12 from "@/public/aser-images/references/tcdd-logo.png"
-import referance13 from "@/public/aser-images/references/thaf.png"
+import referance13 from "@/public/aser-images/references/thales-logo-aser.png"
 import referance14 from "@/public/aser-images/references/tpo.png"
 import referance15 from "@/public/aser-images/references/tubitak.png"
 import referance16 from "@/public/aser-images/references/tuvasac.png"
 import referance17 from "@/public/aser-images/references/uluso.png"
+
 
 const references = [referance1, referance2, referance3, referance4, referance5, referance6, referance7, referance8, referance9, referance10, referance11, referance12, referance13, referance14, referance15, referance16, referance17]
 

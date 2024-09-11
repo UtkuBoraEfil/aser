@@ -9,10 +9,38 @@ import { InsideOfSlider } from "@/components/ui/inside-of-slider";
 import { SliderDesign } from "@/components/ui/slider-design";
 import { CornerDownRight } from "lucide-react";
 import scroll from "@/public/scroll.png";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrambleTextPlugin);
 
 export function FirstSection() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   let slides = [0, 1, 2, 3];
+
+  const title = useRef<HTMLHeadingElement>(null);
+    
+    useGSAP(
+        () => {
+            // gsap code here...
+            gsap.to(title.current, {
+                duration: 2,
+                scrambleText: {
+                  text: "AUTOMATION SOLUTIONS TRUSTED THE WORLD OVER.", 
+                  chars: "upperCase", 
+                  revealDelay: 0.5, 
+                  speed: 0.2,
+                  // tweenLength: false,
+                  // delimiter: " " 
+
+                }
+            }); // <-- automatically reverted
+
+        },
+        { scope: title }
+    ); // <-- scope is for selector text (optional)
   return (
     <>
       <section className="absolute w-full h-full top-0 ">
@@ -32,7 +60,7 @@ export function FirstSection() {
             </SwiperSlide>
           ))}
           <div className="absolute top-0 z-20 lg:px-20 md:px-12 px-8 w-full min-h-screen">
-            <div className=" min-w-full min-h-screen border-x border-white">
+            <div className=" min-w-full min-h-screen md:border-x border-white">
               <SliderDesign />
               <CustomNavigation />
             </div>
@@ -48,8 +76,8 @@ export function FirstSection() {
                 <p className="text-xs leading-none pl-2 border-l-2 border-white">
                   Power of Technology
                 </p>
-                <h1 className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 ">
-                  AUTOMATION SOLUTIONS TRUSTED THE WORLD OVER.
+                <h1 ref={title} className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 ">
+                  
                 </h1>
               </div>
             </div>
