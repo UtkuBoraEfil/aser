@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, use } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
@@ -22,38 +22,33 @@ export function FirstSection() {
   const titles = ["AUTOMATION SOLUTIONS TRUSTED THE WORLD OVER.", "Yarının teknolojilerini bugünden tasarlıyoruz.", "Yenilikçi çözümlerle geleceği şekillendiriyoruz.", "Dünyanın dört bir yanında güvenilir çözümler sunuyoruz."]
   const texts = ["The possession of technologies related to radar systems is critical for countries.", "Work harder son!", "just do it", "useless text"]
   const [activeSwiper, setActiveSwiper] = useState(0);
-  const [text, setText] = useState(texts[0])
-  const [sectionTitle, setTitle] = useState(titles[0])
   
   useEffect(()=>{
     console.log(activeSwiper)
-    setText(texts[activeSwiper])
-    setTitle(titles[activeSwiper])
-    console.log(text)
+    console.log(titles[activeSwiper])
+    const animation = gsap.to(title.current, {
+      duration: 2,
+      scrambleText: {
+        text: titles[activeSwiper],
+        chars: "upperCase",
+        revealDelay: 0.5,
+        speed: 0.2,
+      }});
+      const animation2 = gsap.to(textRef.current, {
+        duration: 4,
+        scrambleText: {
+          text: texts[activeSwiper],
+          chars: "upperCase",
+          revealDelay: 2,
+          speed: 0.2,
+        }});
   },[activeSwiper])
 
 
   const title = useRef<HTMLHeadingElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
     
-    useGSAP(
-        () => {
-            // gsap code here...
-            gsap.to(title.current, {
-                duration: 2,
-                scrambleText: {
-                  text: sectionTitle, 
-                  chars: "upperCase", 
-                  revealDelay: 0.5, 
-                  speed: 0.2,
-                  // tweenLength: false,
-                  // delimiter: " " 
 
-                }
-            }); // <-- automatically reverted
-
-        },
-        { scope: title }
-    ); // <-- scope is for selector text (optional)
   return (
     <>
       <section className="absolute w-full h-full top-0 ">
@@ -91,7 +86,6 @@ export function FirstSection() {
                   Power of Technology
                 </p>
                 <h1 ref={title} className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 ">
-                  {sectionTitle}
                 </h1>
               </div>
             </div>
@@ -104,8 +98,7 @@ export function FirstSection() {
                 />
               </div>
               <div className="w-full">
-                <p className="text-sm ">
-                  {text}
+                <p ref={textRef} className="text-sm ">
                 </p>
                 <button className="flex gap-2 border-b w-fit pt-4">
                   <CornerDownRight size={14} />
