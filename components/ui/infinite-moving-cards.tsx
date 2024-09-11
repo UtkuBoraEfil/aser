@@ -103,7 +103,7 @@ export const InfiniteMovingCards = ({
             className=" min-w-[150px] h-[50px]  object-contain flex flex-col items-center justify-center"
             key={idx}
           > 
-            <Image src={referance}  className=" object-contain w-auto max-h-[50px] filter grayscale"  alt="references"/>
+            <Image src={referance}  className=" object-contain w-auto max-h-[50px] "  alt="references"/>
           </li>
         ))}
       </ul>

@@ -2,15 +2,18 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import React, { useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface InsideOfSliderProps {
   thumbsSwiper: any;
   setThumbsSwiper: React.Dispatch<React.SetStateAction<any>>;
+  activeSlide: any;
 }
 
 export function InsideOfSlider({
   thumbsSwiper,
   setThumbsSwiper,
+  activeSlide,
 }: InsideOfSliderProps) {
   let slides = [
     "[01] - Defense System",
@@ -19,6 +22,7 @@ export function InsideOfSlider({
     "[04] - Telecommunication",
   ];
   const [activeSwiper, setActiveSwiper] = useState(0);
+
   return (
     <>
       <Swiper
@@ -35,7 +39,7 @@ export function InsideOfSlider({
             <div
               className={`w-24 h-14 cursor-pointer flex justify-center bg-slider-image-${
                 index + 1
-              } bg-cover bg-no-repeat bg-center `}
+              } bg-cover bg-no-repeat bg-center`}
             ></div>
                         <div className="w-full h-full hidden">
                 <div className="absolute top-0 left-0 border-t border-l border-white w-2 h-2"></div>
@@ -50,7 +54,7 @@ export function InsideOfSlider({
       <ul className="">
         {slides.map((slide, index)=>(
           <li key={index}>
-            <p className=" text-xs opacity-60 ">{slide}</p>
+            <p className={cn(" text-xs opacity-60 ", activeSlide === index && "opacity-100")}>{slide}</p>
           </li>
         ))}
       </ul>

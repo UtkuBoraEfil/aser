@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
@@ -19,6 +19,19 @@ gsap.registerPlugin(ScrambleTextPlugin);
 export function FirstSection() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   let slides = [0, 1, 2, 3];
+  const titles = ["AUTOMATION SOLUTIONS TRUSTED THE WORLD OVER.", "Yarının teknolojilerini bugünden tasarlıyoruz.", "Yenilikçi çözümlerle geleceği şekillendiriyoruz.", "Dünyanın dört bir yanında güvenilir çözümler sunuyoruz."]
+  const texts = ["The possession of technologies related to radar systems is critical for countries.", "Work harder son!", "just do it", "useless text"]
+  const [activeSwiper, setActiveSwiper] = useState(0);
+  const [text, setText] = useState(texts[0])
+  const [sectionTitle, setTitle] = useState(titles[0])
+  
+  useEffect(()=>{
+    console.log(activeSwiper)
+    setText(texts[activeSwiper])
+    setTitle(titles[activeSwiper])
+    console.log(text)
+  },[activeSwiper])
+
 
   const title = useRef<HTMLHeadingElement>(null);
     
@@ -28,7 +41,7 @@ export function FirstSection() {
             gsap.to(title.current, {
                 duration: 2,
                 scrambleText: {
-                  text: "AUTOMATION SOLUTIONS TRUSTED THE WORLD OVER.", 
+                  text: sectionTitle, 
                   chars: "upperCase", 
                   revealDelay: 0.5, 
                   speed: 0.2,
@@ -48,6 +61,7 @@ export function FirstSection() {
           thumbs={{ swiper: thumbsSwiper }}
           modules={[FreeMode, Navigation, Thumbs]}
           style={{ zIndex: 10 }}
+          onSlideChange={(swiper) => setActiveSwiper(swiper.activeIndex)}
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index} virtualIndex={index}>
@@ -77,7 +91,7 @@ export function FirstSection() {
                   Power of Technology
                 </p>
                 <h1 ref={title} className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 ">
-                  
+                  {sectionTitle}
                 </h1>
               </div>
             </div>
@@ -86,12 +100,12 @@ export function FirstSection() {
                 <InsideOfSlider
                   thumbsSwiper={thumbsSwiper}
                   setThumbsSwiper={setThumbsSwiper}
+                  activeSlide={activeSwiper}
                 />
               </div>
               <div className="w-full">
                 <p className="text-sm ">
-                  The possession of technologies related to radar systems is
-                  critical for countries.
+                  {text}
                 </p>
                 <button className="flex gap-2 border-b w-fit pt-4">
                   <CornerDownRight size={14} />
