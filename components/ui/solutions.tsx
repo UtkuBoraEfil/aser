@@ -38,6 +38,7 @@ export function Solutions() {
       });
     })
   })
+
   return (
     <>
       <h1 className="lg:text-3xl text-2xl  py-10 text-center md:text-start ">
@@ -59,8 +60,7 @@ export function Solutions() {
                 <SolutionCorner />
               </div>
             </div>
-            {/* @ts-ignore */}
-            <h1 ref={(el: HTMLHeadingElement | null) => (titleRefs.current[index] = el)}  className={` will-animate  text-xl pt-2 grid place-content-center lg:place-content-start `}>{solution}</h1>
+            <h1 ref={(el: HTMLHeadingElement | null) => { titleRefs.current[index] = el }}  className={` will-animate  text-xl pt-2 grid place-content-center lg:place-content-start `}></h1>
           </div>
         ))}
       </div>

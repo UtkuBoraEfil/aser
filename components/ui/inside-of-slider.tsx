@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import React, { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { animate, motion, stagger, useAnimate } from "framer-motion";
 
 interface InsideOfSliderProps {
   thumbsSwiper: any;
@@ -23,6 +24,23 @@ export function InsideOfSlider({
   ];
   const [activeSwiper, setActiveSwiper] = useState(0);
 
+  const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
+
+  const variants = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+    animate: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay:  0.1+ (index * 0.3),
+        ease: "easeOut",
+      },
+    }),
+  };
+
   return (
     <>
       <Swiper
@@ -36,25 +54,36 @@ export function InsideOfSlider({
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index} virtualIndex={index} className="!w-fit p-1">
-            <div
+            <motion.div
+              variants={variants}
+              initial="initial"
+              animate="animate"
+              custom={index}
               className={`w-24 h-14 cursor-pointer flex justify-center bg-slider-image-${
                 index + 1
               } bg-cover bg-no-repeat bg-center`}
-            ></div>
-                        <div className="w-full h-full hidden">
-                <div className="absolute top-0 left-0 border-t border-l border-white w-2 h-2"></div>
-                <div className="absolute top-0 right-0 border-t border-r border-white w-2 h-2"></div>
-                <div className="absolute bottom-0 right-0 border-b border-r border-white w-2 h-2"></div>
-                <div className="absolute bottom-0 left-0 border-b border-l border-white w-2 h-2"></div>
-                <div className="w-full h-72 bottom-0 border-t border-white absolute p-5"></div>
-              </div>
+            ></motion.div>
+            <div className="w-full h-full hidden">
+              <div className="absolute top-0 left-0 border-t border-l border-white w-2 h-2"></div>
+              <div className="absolute top-0 right-0 border-t border-r border-white w-2 h-2"></div>
+              <div className="absolute bottom-0 right-0 border-b border-r border-white w-2 h-2"></div>
+              <div className="absolute bottom-0 left-0 border-b border-l border-white w-2 h-2"></div>
+              <div className="w-full h-72 bottom-0 border-t border-white absolute p-5"></div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
       <ul className="">
-        {slides.map((slide, index)=>(
+        {slides.map((slide, index) => (
           <li key={index}>
-            <p className={cn(" text-xs opacity-60 ", activeSlide === index && "opacity-100")}>{slide}</p>
+            <p
+              className={cn(
+                " text-xs opacity-60 ",
+                activeSlide === index && "opacity-100"
+              )}
+            >
+              {slide}
+            </p>
           </li>
         ))}
       </ul>

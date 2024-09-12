@@ -12,6 +12,8 @@ import scroll from "@/public/scroll.png";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+import { motion } from "framer-motion";
+
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrambleTextPlugin);
@@ -80,9 +82,26 @@ export function FirstSection() {
                 <p className="text-xs leading-none pl-2 border-l-2 border-white">
                   Power of Technology
                 </p>
-                <h1 ref={title} className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 overflow-hidden">
-                  {titles[activeSwiper]}
-                </h1>
+                <motion.div
+                      initial={{
+                        opacity: 0,
+                        y: 250,
+                        scale: 0.5,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                      }}
+                      transition={{
+                        duration: 0.5,
+                      }}
+                      className=" mx-auto"
+                      >
+                  <h1 ref={title} className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 overflow-hidden">
+                    {titles[activeSwiper]}
+                  </h1>
+                </motion.div>
               </div>
             </div>
             <div className="w-full min-h-64 relative z-30 py-12  flex gap-10 justify-between">
@@ -94,7 +113,7 @@ export function FirstSection() {
                 />
               </div>
               <div className="w-full">
-                <p ref={textRef} className="text-sm ">
+                <p ref={textRef} className="text-sm overflow-hidden">
                 </p>
                 <button className="flex gap-2 border-b w-fit pt-4">
                   <CornerDownRight size={14} />

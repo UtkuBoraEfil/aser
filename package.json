@@ -11,7 +11,7 @@
   "dependencies": {
     "@gsap/react": "^2.1.1",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.3.31",
+    "framer-motion": "^11.5.4",
     "gsap": "file:gsap-bonus.tgz",
     "lucide": "^0.433.0",
     "lucide-react": "^0.436.0",
