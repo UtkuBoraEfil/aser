@@ -58,12 +58,6 @@ body {
   background-image: url("/aser-images/slider/renewable-energy.jpg");
 }
 
-.swiper-slide-thumb-active {
-  div {
-    display: block !important;
-    cursor: pointer;
-  }
-}
 
 /* .swiper-wrapper {
   gap: 2px;

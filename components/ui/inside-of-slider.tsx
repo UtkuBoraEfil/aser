@@ -49,7 +49,6 @@ export function InsideOfSlider({
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        slideActiveClass="swiper-slide-thumb-active"
         className="w-full max-w-[456px]"
       >
         {slides.map((slide, index) => (
@@ -63,7 +62,7 @@ export function InsideOfSlider({
                 index + 1
               } bg-cover bg-no-repeat bg-center`}
             ></motion.div>
-            <div className="w-full h-full hidden">
+            <div className={cn(`w-full h-full cursor-pointer `, activeSlide === index && "block" || "hidden")}>
               <div className="absolute top-0 left-0 border-t border-l border-white w-2 h-2"></div>
               <div className="absolute top-0 right-0 border-t border-r border-white w-2 h-2"></div>
               <div className="absolute bottom-0 right-0 border-b border-r border-white w-2 h-2"></div>
