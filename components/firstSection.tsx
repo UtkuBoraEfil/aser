@@ -9,11 +9,11 @@ import { InsideOfSlider } from "@/components/ui/inside-of-slider";
 import { SliderDesign } from "@/components/ui/slider-design";
 import { CornerDownRight } from "lucide-react";
 import scroll from "@/public/scroll.png";
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import hamburger from "@/public/hamburger.png";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { motion } from "framer-motion";
-
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrambleTextPlugin);
@@ -21,30 +21,37 @@ gsap.registerPlugin(ScrambleTextPlugin);
 export function FirstSection() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   let slides = [0, 1, 2, 3];
-  const titles = ["AUTOMATION SOLUTIONS TRUSTED THE WORLD OVER.", "Yarının teknolojilerini bugünden tasarlıyoruz.", "Yenilikçi çözümlerle geleceği şekillendiriyoruz.", "Dünyanın dört bir yanında güvenilir çözümler sunuyoruz."]
-  const texts = ["The possession of technologies related to radar systems is critical for countries.", "Work harder son!", "just do it", "useless text"]
+  const titles = [
+    "AUTOMATION SOLUTIONS TRUSTED THE WORLD OVER.",
+    "Yarının teknolojilerini bugünden tasarlıyoruz.",
+    "Yenilikçi çözümlerle geleceği şekillendiriyoruz.",
+    "Dünyanın dört bir yanında güvenilir çözümler sunuyoruz.",
+  ];
+  const texts = [
+    "The possession of technologies related to radar systems is critical for countries.",
+    "Work harder son!",
+    "just do it",
+    "useless text",
+  ];
   const [activeSwiper, setActiveSwiper] = useState(0);
 
   const title = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
-  
-  useGSAP(
-    () => {
-        // gsap code here...
-        gsap.to(textRef.current, {
-            duration: 2,
-            scrambleText: {
-              text: texts[activeSwiper], 
-              chars: "upperCase", 
-              revealDelay: 0.5, 
-              speed: 0.2,
-              // tweenLength: false,
-              // delimiter: " " 
-            }
-        });
-    }, [activeSwiper],
-); // <-- scope is for selector text (optional)
-  
+
+  useGSAP(() => {
+    // gsap code here...
+    gsap.to(textRef.current, {
+      duration: 2,
+      scrambleText: {
+        text: texts[activeSwiper],
+        chars: "upperCase",
+        revealDelay: 0.5,
+        speed: 0.2,
+        // tweenLength: false,
+        // delimiter: " "
+      },
+    });
+  }, [activeSwiper]); // <-- scope is for selector text (optional)
 
   return (
     <>
@@ -66,7 +73,7 @@ export function FirstSection() {
             </SwiperSlide>
           ))}
           <div className="absolute top-0 z-20 lg:px-20 md:px-12 px-8 w-full min-h-screen">
-            <div className=" min-w-full min-h-screen md:border-x border-white">
+            <div className=" min-w-full min-h-screen border-x border-white">
               <SliderDesign />
               <CustomNavigation />
             </div>
@@ -83,22 +90,25 @@ export function FirstSection() {
                   Power of Technology
                 </p>
                 <motion.div
-                      initial={{
-                        opacity: 0,
-                        y: 250,
-                        scale: 0.5,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                      }}
-                      transition={{
-                        duration: 0.5,
-                      }}
-                      className=" mx-auto"
-                      >
-                  <h1 ref={title} className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 overflow-hidden">
+                  initial={{
+                    opacity: 0,
+                    y: 250,
+                    scale: 0.5,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                  }}
+                  className=" mx-auto"
+                >
+                  <h1
+                    ref={title}
+                    className="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold  lg:leading-[92px] md:leading-[60px] leading-10 overflow-hidden"
+                  >
                     {titles[activeSwiper]}
                   </h1>
                 </motion.div>
@@ -113,8 +123,10 @@ export function FirstSection() {
                 />
               </div>
               <div className="w-full">
-                <p ref={textRef} className="text-sm overflow-hidden">
-                </p>
+                <p
+                  ref={textRef}
+                  className="text-sm overflow-hidden             "
+                ></p>
                 <button className="flex gap-2 border-b w-fit pt-4">
                   <CornerDownRight size={14} />
                   <p className="text-xs">View Details</p>
@@ -127,11 +139,14 @@ export function FirstSection() {
       <h1 className="absolute z-40 top-5 right-0 lg:text-sm text-xs vertical-text lg:w-20 md:w-12 w-8 grid place-content-center">
         {"// POWER OF TECHNOLOGY"}
       </h1>
-      <h1 className="relative z-40 top-5 left-0 lg:w-20 md:w-12 w-8 text-center  text-base">
-        A
-      </h1>
-      <div className="absolute z-40 bottom-5 left-0 lg:w-20 md:w-12 w-8  flex justify-center">
-        <Image src={scroll} alt="scroll"/>
+      <div className="flex flex-col h-screen justify-between relative z-40 top-0 left-0 py-5 lg:w-20 md:w-12 w-8">
+        <h1 className="text-center  text-base">A</h1>
+        <div className="flex justify-center">
+          <Image src={hamburger} alt="scroll" />
+        </div>
+        <div className="flex justify-center">
+          <Image src={scroll} alt="scroll" />
+        </div>
       </div>
     </>
   );

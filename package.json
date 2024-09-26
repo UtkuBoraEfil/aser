@@ -15,7 +15,7 @@
     "gsap": "file:gsap-bonus.tgz",
     "lucide": "^0.433.0",
     "lucide-react": "^0.436.0",
-    "next": "14.2.7",
+    "next": "^14.2.13",
     "react": "^18",
     "react-dom": "^18",
     "swiper": "^11.1.11",
